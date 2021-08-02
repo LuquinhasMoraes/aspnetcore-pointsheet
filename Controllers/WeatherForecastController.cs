@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace pointsheet_api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Weather")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
