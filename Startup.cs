@@ -60,6 +60,8 @@ namespace pointsheet_api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "pointsheet_api v1"));
             }
 
+            app.UseDeveloperExceptionPage();
+
             app.UseRouting();
 
             app.UseAuthorization();
