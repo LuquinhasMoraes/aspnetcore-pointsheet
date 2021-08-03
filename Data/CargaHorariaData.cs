@@ -19,7 +19,75 @@ namespace pointsheet_api.Data
 
         public IEnumerable<CargaHoraria> ObtemCargaHoraria()
         {
-            return _context.CargaHoraria;
+            var cargaHoraria = _context.CargaHoraria;
+
+            return cargaHoraria;
+        }
+
+        public IEnumerable<CargaHoraria> IniciaDiaDeTrabalho(CargaHoraria cargaHorariaAIniciar)
+        {
+            try
+            {
+                cargaHorariaAIniciar.DataEntrada = DateTime.Now;
+                cargaHorariaAIniciar.InicioJornada = DateTime.Now;
+                var cargaHoraria = _context.CargaHoraria;
+                cargaHoraria.Add(cargaHorariaAIniciar);
+                _context.SaveChanges();
+                return cargaHoraria;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public int IniciaAlmoco(int idCargaHoraria)
+        {
+            try
+            {
+                var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
+                cargaHoraria.InicioAlmoco = DateTime.Now;
+                return _context.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int EncerraAlmoco(int idCargaHoraria)
+        {
+            try
+            {
+                var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
+                cargaHoraria.FimAlmoco = DateTime.Now;
+                return _context.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int EncerraJornada(int idCargaHoraria)
+        {
+            try
+            {
+                var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
+                cargaHoraria.FimAlmoco = DateTime.Now;
+                return _context.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

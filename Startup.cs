@@ -23,6 +23,9 @@ namespace pointsheet_api
     public class Startup
     {
         public const string DefaultConnection = @"DefaultConnection";
+
+        private const string OPEN_POLICY = "OpenPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -48,6 +51,14 @@ namespace pointsheet_api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "pointsheet_api", Version = "v1" });
             });
+
+            // Adicionando politica de CORS
+            services.AddCors(opt => opt.AddPolicy(OPEN_POLICY, builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +74,8 @@ namespace pointsheet_api
             app.UseDeveloperExceptionPage();
 
             app.UseRouting();
+
+            app.UseCors(OPEN_POLICY);
 
             app.UseAuthorization();
 

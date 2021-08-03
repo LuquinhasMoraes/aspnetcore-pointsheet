@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,9 @@ namespace pointsheet_api.Models
 {
     public class CargaHoraria
     {
+        decimal _diferencaHorasTrabalhadas = 0;
+        decimal _horasTrabalhadas = 0;
+
         [Key]
         public int? IdCargaHoraria { get; set; }
         public DateTime DataEntrada { get; set; }
@@ -15,7 +19,41 @@ namespace pointsheet_api.Models
         public DateTime InicioAlmoco { get; set; }
         public DateTime FimAlmoco { get; set; }
         public DateTime FimJornada { get; set; }
-        public decimal HorasTrabalhadas { get; set; }
         public bool Folga { get; set; }
+        [NotMapped]
+        public decimal DiferencaHorasTrabalhadas { 
+            get 
+            {
+                decimal horarioBase = 8;
+
+                decimal diff = HorasTrabalhadas - horarioBase;
+
+                _diferencaHorasTrabalhadas = diff;
+                
+                return _diferencaHorasTrabalhadas;
+            } 
+            set
+            {
+                
+
+            } 
+        }
+
+        [NotMapped]
+        public decimal HorasTrabalhadas { 
+            get 
+            {
+                var totalHoras = FimJornada - InicioJornada - (FimAlmoco - InicioAlmoco);
+
+                var t = Convert.ToDecimal(totalHoras.TotalHours);
+
+                return t;
+            }
+            set 
+            {
+                
+            }
+        }
+        
     }
 }
