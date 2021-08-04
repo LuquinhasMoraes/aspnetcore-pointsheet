@@ -9,7 +9,7 @@ namespace pointsheet_api.Data.Interfaces
     public interface ICargaHorariaData
     {
         IEnumerable<CargaHoraria> ObtemCargaHoraria();
-        IEnumerable<CargaHoraria> IniciaDiaDeTrabalho(CargaHoraria cargaHorariaAIniciar);
+        IEnumerable<CargaHoraria> IniciaDiaDeTrabalho();
         int IniciaAlmoco(int idCargaHoraria);
         int EncerraAlmoco(int idCargaHoraria);
         int EncerraJornada(int idCargaHoraria);

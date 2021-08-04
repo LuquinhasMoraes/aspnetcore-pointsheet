@@ -28,11 +28,11 @@ namespace pointsheet_api.Controllers
 
         [HttpPost]
         [Route("Iniciar")]
-        public IActionResult IniciarCargaHoraria([FromBody]CargaHoraria cargaHoraria)
+        public IActionResult IniciarCargaHoraria()
         {
             try
             {
-                var cargaHorariaInserida = _cargaHorariaData.IniciaDiaDeTrabalho(cargaHoraria);
+                var cargaHorariaInserida = _cargaHorariaData.IniciaDiaDeTrabalho();
                 return Ok(cargaHorariaInserida);
             }
             catch (Exception ex)
