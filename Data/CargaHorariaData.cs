@@ -47,7 +47,7 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.InicioAlmoco = DateTime.Now;
+                cargaHoraria.InicioAlmoco = DateTime.Now.AddHours(-3); ;
                 return _context.SaveChanges();
 
             }
@@ -63,7 +63,7 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.FimAlmoco = DateTime.Now;
+                cargaHoraria.FimAlmoco = DateTime.Now.AddHours(-3); ;
                 return _context.SaveChanges();
 
             }
@@ -79,7 +79,7 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.FimAlmoco = DateTime.Now;
+                cargaHoraria.FimAlmoco = DateTime.Now.AddHours(-3); ;
                 return _context.SaveChanges();
 
             }
