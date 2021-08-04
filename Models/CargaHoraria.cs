@@ -45,7 +45,7 @@ namespace pointsheet_api.Models
             {
                 var totalHoras = FimJornada - InicioJornada - (FimAlmoco - InicioAlmoco);
 
-                var t = Convert.ToDecimal(totalHoras.TotalHours);
+                var t = Convert.ToDecimal(totalHoras.TotalHours < 0 ? 0 : totalHoras.TotalHours);
 
                 return t;
             }
