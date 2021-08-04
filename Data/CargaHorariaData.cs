@@ -28,8 +28,8 @@ namespace pointsheet_api.Data
         {
             try
             {
-                cargaHorariaAIniciar.DataEntrada = DateTime.Now;
-                cargaHorariaAIniciar.InicioJornada = DateTime.Now;
+                cargaHorariaAIniciar.DataEntrada = DateTime.Now.AddHours(-3);
+                cargaHorariaAIniciar.InicioJornada = DateTime.Now.AddHours(-3);
                 var cargaHoraria = _context.CargaHoraria;
                 cargaHoraria.Add(cargaHorariaAIniciar);
                 _context.SaveChanges();
