@@ -79,7 +79,7 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.FimAlmoco = DateTime.Now.AddHours(-3); ;
+                cargaHoraria.FimJornada = DateTime.Now.AddHours(-3); ;
                 return _context.SaveChanges();
 
             }
