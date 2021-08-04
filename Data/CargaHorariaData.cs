@@ -24,10 +24,11 @@ namespace pointsheet_api.Data
             return cargaHoraria;
         }
 
-        public IEnumerable<CargaHoraria> IniciaDiaDeTrabalho(CargaHoraria cargaHorariaAIniciar)
+        public IEnumerable<CargaHoraria> IniciaDiaDeTrabalho()
         {
             try
             {
+                var cargaHorariaAIniciar = new CargaHoraria();
                 cargaHorariaAIniciar.DataEntrada = DateTime.Now.AddHours(-3);
                 cargaHorariaAIniciar.InicioJornada = DateTime.Now.AddHours(-3);
                 var cargaHoraria = _context.CargaHoraria;
