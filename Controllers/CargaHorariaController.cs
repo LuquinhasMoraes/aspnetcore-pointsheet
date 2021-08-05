@@ -43,6 +43,23 @@ namespace pointsheet_api.Controllers
 
         }
 
+        [HttpPost]
+        [Route("CriaFolga")]
+        public IActionResult CriaFolga()
+        {
+            try
+            {
+                var cargaHorariaInserida = _cargaHorariaData.CriaDiaDeFolga();
+                return Ok(cargaHorariaInserida);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
         [HttpPut]
         [Route("Atualiza")]
         public IActionResult Teste(int idCargaHoraria, ETipoAtualizacao tipoAtualizacao)

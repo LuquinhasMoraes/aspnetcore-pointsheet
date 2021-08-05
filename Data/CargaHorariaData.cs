@@ -24,6 +24,23 @@ namespace pointsheet_api.Data
             return cargaHoraria;
         }
 
+        public IEnumerable<CargaHoraria> CriaDiaDeFolga()
+        {
+            try
+            {
+                CargaHoraria folgaAIniciar = new CargaHoraria().CriaFolga();
+                List<CargaHoraria> cargaHoraria = _context.CargaHoraria.ToList();
+                cargaHoraria.Add(folgaAIniciar);
+                _context.SaveChanges();
+                return cargaHoraria;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
         public IEnumerable<CargaHoraria> IniciaDiaDeTrabalho()
         {
             try
