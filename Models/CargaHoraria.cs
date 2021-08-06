@@ -19,14 +19,18 @@ namespace pointsheet_api.Models
         public DateTime InicioAlmoco { get; set; }
         public DateTime FimAlmoco { get; set; }
         public DateTime FimJornada { get; set; }
-        public bool Folga { get; set; }
+        public bool? Folga { get; set; }
         [NotMapped]
         public decimal DiferencaHorasTrabalhadas { 
             get 
             {
                 decimal horarioBase = 8;
+                decimal diff = 0;
 
-                decimal diff = HorasTrabalhadas - horarioBase;
+                if (Folga == false)
+                {
+                    diff = (decimal)HorasTrabalhadas - horarioBase;
+                }
 
                 _diferencaHorasTrabalhadas = diff;
                 
@@ -40,14 +44,20 @@ namespace pointsheet_api.Models
         }
 
         [NotMapped]
-        public decimal HorasTrabalhadas { 
+        public decimal? HorasTrabalhadas { 
             get 
             {
-                var totalHoras = FimJornada - InicioJornada - (FimAlmoco - InicioAlmoco);
+                if(Folga == false)
+                {
+                    var totalHoras = FimJornada - InicioJornada - (FimAlmoco - InicioAlmoco);
 
-                var t = Convert.ToDecimal(totalHoras.TotalHours < 0 ? 0 : totalHoras.TotalHours);
+                    var t = Convert.ToDecimal(totalHoras.TotalHours < 0 ? 0 : totalHoras.TotalHours);
 
-                return Math.Round(t, 2);
+                    return Math.Round(t, 2);
+                }
+
+                return null;
+                
             }
             set 
             {
@@ -58,7 +68,7 @@ namespace pointsheet_api.Models
         public CargaHoraria CriaFolga()
         {
             CargaHoraria folga = new CargaHoraria();
-            folga.DataEntrada = DateTime.Now.AddHours(-3);
+            folga.DataEntrada = DateTime.Now.ToLocalTime();
             folga.Folga = true;
 
             return folga;
