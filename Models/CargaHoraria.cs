@@ -30,7 +30,7 @@ namespace pointsheet_api.Models
 
                 _diferencaHorasTrabalhadas = diff;
                 
-                return _diferencaHorasTrabalhadas;
+                return Math.Round(_diferencaHorasTrabalhadas, 2);
             } 
             set
             {
