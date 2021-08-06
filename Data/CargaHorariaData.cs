@@ -29,7 +29,7 @@ namespace pointsheet_api.Data
             try
             {
                 CargaHoraria folgaAIniciar = new CargaHoraria().CriaFolga();
-                List<CargaHoraria> cargaHoraria = _context.CargaHoraria.ToList();
+                var cargaHoraria = _context.CargaHoraria;
                 cargaHoraria.Add(folgaAIniciar);
                 _context.SaveChanges();
                 return cargaHoraria;

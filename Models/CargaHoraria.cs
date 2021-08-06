@@ -47,7 +47,7 @@ namespace pointsheet_api.Models
 
                 var t = Convert.ToDecimal(totalHoras.TotalHours < 0 ? 0 : totalHoras.TotalHours);
 
-                return t;
+                return Math.Round(t, 2);
             }
             set 
             {
