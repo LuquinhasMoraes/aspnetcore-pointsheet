@@ -65,7 +65,7 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.InicioAlmoco = DateTime.Now.AddHours(-3); ;
+                cargaHoraria.InicioAlmoco = DateTime.Now.AddHours(-3);
                 return _context.SaveChanges();
 
             }

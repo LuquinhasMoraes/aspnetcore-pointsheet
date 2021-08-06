@@ -58,7 +58,7 @@ namespace pointsheet_api.Models
         public CargaHoraria CriaFolga()
         {
             CargaHoraria folga = new CargaHoraria();
-            folga.DataEntrada = DateTime.Now;
+            folga.DataEntrada = DateTime.Now.AddHours(-3);
             folga.Folga = true;
 
             return folga;
