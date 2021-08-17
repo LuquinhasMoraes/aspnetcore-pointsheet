@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace pointsheet_api.Models
@@ -19,6 +20,8 @@ namespace pointsheet_api.Models
         public DateTime InicioAlmoco { get; set; }
         public DateTime FimAlmoco { get; set; }
         public DateTime FimJornada { get; set; }
+        //[NotMapped]
+        [JsonIgnore]
         public bool? Folga { get; set; }
         [NotMapped]
         public decimal DiferencaHorasTrabalhadas { 

@@ -10,5 +10,6 @@ namespace pointsheet_api.Models.Contexts
     {
         public CargaHorariaContext(DbContextOptions<CargaHorariaContext> options) : base(options) { }
         public DbSet<CargaHoraria> CargaHoraria { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
     }
 }

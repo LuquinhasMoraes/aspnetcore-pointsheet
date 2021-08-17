@@ -19,7 +19,7 @@ namespace pointsheet_api.Data
 
         public IEnumerable<CargaHoraria> ObtemCargaHoraria()
         {
-            var cargaHoraria = _context.CargaHoraria;
+            var cargaHoraria = _context.CargaHoraria.Where(x => x.Folga == false).OrderByDescending(x => x.DataEntrada).ToList();
 
             return cargaHoraria;
         }
