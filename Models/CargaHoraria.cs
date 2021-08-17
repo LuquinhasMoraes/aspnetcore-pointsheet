@@ -12,6 +12,7 @@ namespace pointsheet_api.Models
     {
         decimal _diferencaHorasTrabalhadas = 0;
         decimal _horasTrabalhadas = 0;
+        decimal? _tempoDeAlmoco = 0;
 
         [Key]
         public int? IdCargaHoraria { get; set; }
@@ -20,6 +21,22 @@ namespace pointsheet_api.Models
         public DateTime InicioAlmoco { get; set; }
         public DateTime FimAlmoco { get; set; }
         public DateTime FimJornada { get; set; }
+        //[NotMapped]
+        [NotMapped]
+        public decimal? TempoDeAlmoco {
+            get
+            {
+                var tempo = FimAlmoco - InicioAlmoco;
+                decimal TempoDeAlmoco = Convert.ToDecimal(tempo.TotalHours);
+
+                return Math.Round(TempoDeAlmoco, 2);
+            }
+            set
+            {
+
+
+            }
+        }
         //[NotMapped]
         [JsonIgnore]
         public bool? Folga { get; set; }
