@@ -10,6 +10,7 @@ namespace pointsheet_api.Data
 {
     public class CargaHorariaData : ICargaHorariaData
     {
+        // Context Carga Horaria
         CargaHorariaContext _context = null;
 
         public CargaHorariaData(CargaHorariaContext context)
