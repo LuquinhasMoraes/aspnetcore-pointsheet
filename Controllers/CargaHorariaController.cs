@@ -19,6 +19,7 @@ namespace pointsheet_api.Controllers
         {
             _cargaHorariaData = cargaHorariaData;
         }
+        [Route("Lista")]
         public IActionResult Index()
         {
             var data = _cargaHorariaData.ObtemCargaHoraria();
