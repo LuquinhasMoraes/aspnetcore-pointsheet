@@ -18,36 +18,19 @@ namespace pointsheet_api.Models
         public int? IdCargaHoraria { get; set; }
         public DateTime DataEntrada { get; set; }
         public DateTime InicioJornada { get; set; }
-        [NotMapped]
-        public TimeSpan InicioJornadaTime
-        {
-            get
-            {
-                var tempo = InicioJornada;
-                //decimal TempoDeAlmoco = Convert.ToDecimal(tempo.TotalHours);
-                return new TimeSpan(tempo.Ticks);
-                //return Math.Round(TempoDeAlmoco, 2);
-            }
-            set
-            {
-
-
-            }
-        }
-        [NotMapped]
-        public TimeSpan FimJornadaTime { get; set; }
         public DateTime InicioAlmoco { get; set; }
         public DateTime FimAlmoco { get; set; }
         public DateTime FimJornada { get; set; }
         //[NotMapped]
         [NotMapped]
-        public TimeSpan? TempoDeAlmoco {
+        [JsonIgnore]
+        public decimal? TempoDeAlmoco {
             get
             {
                 var tempo = FimAlmoco - InicioAlmoco;
-                //decimal TempoDeAlmoco = Convert.ToDecimal(tempo.TotalHours);
-                return tempo;
-                //return Math.Round(TempoDeAlmoco, 2);
+                decimal TempoDeAlmoco = Convert.ToDecimal(tempo.TotalHours);
+
+                return Math.Round(TempoDeAlmoco, 2);
             }
             set
             {
