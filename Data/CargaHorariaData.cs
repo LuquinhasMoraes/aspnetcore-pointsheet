@@ -47,8 +47,17 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHorariaAIniciar = new CargaHoraria();
+#if (DEBUG)
+                cargaHorariaAIniciar.DataEntrada = DateTime.Now;
+                cargaHorariaAIniciar.InicioJornada = DateTime.Now;
+                cargaHorariaAIniciar.Folga = false;
+#endif
+
+#if (!DEBUG)
                 cargaHorariaAIniciar.DataEntrada = DateTime.Now.AddHours(-3);
                 cargaHorariaAIniciar.InicioJornada = DateTime.Now.AddHours(-3);
+#endif
+
                 var cargaHoraria = _context.CargaHoraria;
                 cargaHoraria.Add(cargaHorariaAIniciar);
                 _context.SaveChanges();
@@ -65,8 +74,17 @@ namespace pointsheet_api.Data
         {
             try
             {
-                var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.InicioAlmoco = DateTime.Now.AddHours(-3);
+                var cargaHorariaAIniciar = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
+
+#if (DEBUG)
+                cargaHorariaAIniciar.InicioAlmoco = DateTime.Now;
+#endif
+
+#if (!DEBUG)
+                cargaHorariaAIniciar.InicioAlmoco = DateTime.Now.AddHours(-3);
+#endif
+
+
                 return _context.SaveChanges();
 
             }
@@ -82,7 +100,14 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.FimAlmoco = DateTime.Now.AddHours(-3); ;
+                
+#if (DEBUG)
+                cargaHoraria.FimAlmoco = DateTime.Now;
+#endif
+
+#if (!DEBUG)
+                cargaHoraria.FimAlmoco = DateTime.Now.AddHours(-3);
+#endif
                 return _context.SaveChanges();
 
             }
@@ -98,7 +123,15 @@ namespace pointsheet_api.Data
             try
             {
                 var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.IdCargaHoraria == idCargaHoraria);
-                cargaHoraria.FimJornada = DateTime.Now.AddHours(-3); ;
+
+#if (DEBUG)
+                cargaHoraria.FimJornada = DateTime.Now;
+#endif
+
+#if (!DEBUG)
+                cargaHoraria.FimJornada = DateTime.Now.AddHours(-3);
+#endif
+
                 return _context.SaveChanges();
 
             }

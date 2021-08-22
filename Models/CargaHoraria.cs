@@ -23,7 +23,6 @@ namespace pointsheet_api.Models
         public DateTime FimJornada { get; set; }
         //[NotMapped]
         [NotMapped]
-        [JsonIgnore]
         public decimal? TempoDeAlmoco {
             get
             {
