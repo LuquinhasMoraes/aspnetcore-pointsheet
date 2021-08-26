@@ -14,5 +14,6 @@ namespace pointsheet_api.Data.Interfaces
         int EncerraAlmoco(int idCargaHoraria);
         int EncerraJornada(int idCargaHoraria);
         IEnumerable<CargaHoraria> CriaDiaDeFolga();
+        CargaHoraria ObtemCargaHorariaPorId(int idCargaHoraria);
     }
 }

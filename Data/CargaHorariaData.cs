@@ -25,6 +25,13 @@ namespace pointsheet_api.Data
             return cargaHoraria;
         }
 
+        public CargaHoraria ObtemCargaHorariaPorId(int idCargaHoraria)
+        {
+            var cargaHoraria = _context.CargaHoraria.FirstOrDefault(x => x.Folga == false && x.IdCargaHoraria == idCargaHoraria);
+
+            return cargaHoraria;
+        }
+
         public IEnumerable<CargaHoraria> CriaDiaDeFolga()
         {
             try
@@ -51,9 +58,7 @@ namespace pointsheet_api.Data
                 cargaHorariaAIniciar.DataEntrada = DateTime.Now;
                 cargaHorariaAIniciar.InicioJornada = DateTime.Now;
                 cargaHorariaAIniciar.Folga = false;
-#endif
-
-#if (!DEBUG)
+#else
                 cargaHorariaAIniciar.DataEntrada = DateTime.Now.AddHours(-3);
                 cargaHorariaAIniciar.InicioJornada = DateTime.Now.AddHours(-3);
 #endif
@@ -78,9 +83,7 @@ namespace pointsheet_api.Data
 
 #if (DEBUG)
                 cargaHorariaAIniciar.InicioAlmoco = DateTime.Now;
-#endif
-
-#if (!DEBUG)
+#else
                 cargaHorariaAIniciar.InicioAlmoco = DateTime.Now.AddHours(-3);
 #endif
 
@@ -103,9 +106,7 @@ namespace pointsheet_api.Data
                 
 #if (DEBUG)
                 cargaHoraria.FimAlmoco = DateTime.Now;
-#endif
-
-#if (!DEBUG)
+#else
                 cargaHoraria.FimAlmoco = DateTime.Now.AddHours(-3);
 #endif
                 return _context.SaveChanges();
@@ -126,9 +127,7 @@ namespace pointsheet_api.Data
 
 #if (DEBUG)
                 cargaHoraria.FimJornada = DateTime.Now;
-#endif
-
-#if (!DEBUG)
+#else
                 cargaHoraria.FimJornada = DateTime.Now.AddHours(-3);
 #endif
 

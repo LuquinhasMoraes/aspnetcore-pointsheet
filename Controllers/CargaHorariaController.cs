@@ -27,6 +27,14 @@ namespace pointsheet_api.Controllers
             return Ok(data);
         }
 
+        [Route("ListaPorId")]
+        public IActionResult ListaPorId(int idCargaHoraria)
+        {
+            var data = _cargaHorariaData.ObtemCargaHorariaPorId(idCargaHoraria);
+
+            return Ok(data);
+        }
+
         [HttpPost]
         [Route("Iniciar")]
         public IActionResult IniciarCargaHoraria()
