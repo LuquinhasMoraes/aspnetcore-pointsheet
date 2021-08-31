@@ -61,6 +61,7 @@ namespace pointsheet_api.Data
 #else
                 cargaHorariaAIniciar.DataEntrada = DateTime.Now.AddHours(-3);
                 cargaHorariaAIniciar.InicioJornada = DateTime.Now.AddHours(-3);
+                cargaHorariaAIniciar.Folga = false;
 #endif
 
                 var cargaHoraria = _context.CargaHoraria;
